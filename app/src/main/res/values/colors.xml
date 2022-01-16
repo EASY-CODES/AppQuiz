@@ -13,7 +13,7 @@
     <color name="header">#292b31</color>
     <color name="text_primary">#aab4bc</color>
     <color name="text_secundary">#242b47</color>
-    <color name="stroke_selected">#0e2b33</color>
+    <color name="stroke_selected">#2986a1</color>
     <color name="stroke_alternative">#484f6a</color>
     <color name="dark">#000000</color>
     <color name="bg_button">#e7fafd</color>
