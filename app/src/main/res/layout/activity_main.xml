@@ -43,6 +43,7 @@
 
 
     <TableLayout
+        android:id="@+id/tablelayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -59,27 +60,30 @@
 
             <include
                 layout="@layout/item_category"
+                android:id="@+id/category1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:layout_weight="0.3"
-                android:layout_gravity="center" />
+                android:layout_margin="10dp"/>
 
             <include
                 layout="@layout/item_category"
+                android:id="@+id/category2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_weight="0.3"
-                android:layout_gravity="center" />
+                android:layout_margin="10dp"/>
 
             <include
                 layout="@layout/item_category"
+                android:id="@+id/category3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
                 android:layout_weight="0.3"
-                android:layout_gravity="center" />
+                android:layout_margin="10dp"/>
         </TableRow>
 
         <TableRow
@@ -88,6 +92,7 @@
 
             <include
                 layout="@layout/item_category"
+                android:id="@+id/category4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
@@ -96,6 +101,7 @@
 
             <include
                 layout="@layout/item_category"
+                android:id="@+id/category5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
@@ -104,6 +110,7 @@
 
             <include
                 layout="@layout/item_category"
+                android:id="@+id/category6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
