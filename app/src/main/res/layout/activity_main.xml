@@ -114,16 +114,17 @@
 
     </TableLayout>
 
-    <Button
+    <TextView
         android:id="@+id/button"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/bg_rect"
+        android:background="@drawable/bg_view_all"
         android:text="View all"
         android:textColor="@color/text_button"
-        android:textSize="10sp"
+        android:padding="5dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/textView2" />

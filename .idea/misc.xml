@@ -5,12 +5,16 @@
       <map>
         <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/drawable/bg_alternative.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/drawable/bg_alternative_selected.xml" value="0.20833333333333334" />
-        <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/drawable/bg_header.xml" value="0.21296296296296297" />
+        <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/drawable/bg_button_share_result.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/drawable/bg_button_take_new_quiz.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/drawable/bg_header.xml" value="0.33" />
         <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/drawable/bg_rect.xml" value="0.11481481481481481" />
         <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/drawable/bg_top_show.xml" value="0.21296296296296297" />
+        <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/drawable/bg_view_all.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/drawable/ic_android.xml" value="0.1125" />
         <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_quiz.xml" value="0.22" />
+        <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_result.xml" value="0.22" />
         <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/layout/header.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/layout/item_category.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/jerem/AndroidStudioProjects/Quiz/app/src/main/res/layout/top_show.xml" value="0.20416666666666666" />

@@ -8,4 +8,6 @@
     <string name="question_title">Question 06/20</string>
     <string name="text_question"><![CDATA[The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?]]></string>
     <string name="text_alternative">Alternativa XX</string>
+    <string name="quiz_result">Quiz Result</string>
+    <string name="text_result">Consectetur adipiscing elit. Aenean euis bibendum laoreet.</string>
 </resources>
