@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     fun openActivity(tableLayout: TableLayout , row: Int, position: Int, category: String){
         val row: View = tableLayout[row].findViewById(position)
         row.setOnClickListener {
-            intent = Intent(this, Quiz::class.java)
+            intent = Intent(this, QuizActivity::class.java)
             intent.putExtra(CATEGORY, category)
             this.startActivity(intent)
 
