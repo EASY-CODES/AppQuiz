@@ -1,5 +1,6 @@
 package jota.kalebe.quiz
 
+import jota.kalebe.quiz.model.QuizHttp
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -12,6 +13,15 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        val request = QuizHttp.searchQuestions(
+            QuizHttp.AMOUT,
+            QuizHttp.GEOGRAFY,
+            QuizHttp.EASY,
+            QuizHttp.MULTIPLE
+        )
+
+        request?.results?.forEach { quiz->
+            println(quiz)
+        }
     }
 }

@@ -42,5 +42,19 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    //coroutines
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
+
+    //viewmodel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
+
+    //libs for consume api
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+
+    //generate data class model
+    implementation 'wu.seal.jsontokotlin:library:3.6.1'
+
 }

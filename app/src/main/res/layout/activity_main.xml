@@ -59,13 +59,14 @@
             android:layout_height="wrap_content">
 
             <include
-                layout="@layout/item_category"
                 android:id="@+id/category1"
+                layout="@layout/item_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:layout_weight="0.3"
                 android:layout_margin="10dp"/>
+
 
             <include
                 layout="@layout/item_category"

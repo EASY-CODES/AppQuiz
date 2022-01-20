@@ -5,9 +5,11 @@
     <string name="text_description">De Finibus Bonorum et Malorum for use</string>
     <string name="name_user">Jeremias Kalebe Cunha Estumano</string>
     <string name="category_title">Mathematics Quiz</string>
-    <string name="question_title">Question 06/20</string>
+    <string name="question_title">Question 1/10</string>
     <string name="text_question"><![CDATA[The metric prefix &quot;atto-&quot; makes a measurement how much smaller than the base unit?]]></string>
     <string name="text_alternative">Alternativa XX</string>
     <string name="quiz_result">Quiz Result</string>
     <string name="text_result">Consectetur adipiscing elit. Aenean euis bibendum laoreet.</string>
+    <string name="message_loading">Loading...</string>
+    <string name="error_loading">Error require questions.</string>
 </resources>

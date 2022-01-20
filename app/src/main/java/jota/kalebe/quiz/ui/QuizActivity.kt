@@ -1,25 +1,35 @@
 package jota.kalebe.quiz.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
-import android.view.animation.Animation
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.view.allViews
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.BaseOnTabSelectedListener
+import com.google.android.material.tabs.TabLayoutMediator
 import jota.kalebe.quiz.R
+import jota.kalebe.quiz.model.Answer
+import jota.kalebe.quiz.model.Quiz
+import jota.kalebe.quiz.model.QuizHttp
+import jota.kalebe.quiz.model.SearchQuiz
 import jota.kalebe.quiz.ui.adapter.QuizAdapter
+import jota.kalebe.quiz.ui.viewmodel.QuizListViewmodel
 import kotlinx.android.synthetic.main.activity_quiz.*
+import kotlinx.android.synthetic.main.layout_quiz.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import jota.kalebe.quiz.model.Quiz as Quiz
+import kotlinx.coroutines.withContext
 
 class QuizActivity : AppCompatActivity() {
     private val CATEGORY = "CATEGORY"
@@ -28,64 +38,101 @@ class QuizActivity : AppCompatActivity() {
     lateinit var quizPagerAdaper: QuizAdapter;
     lateinit var tabIndicator: TabLayout;
     lateinit var btnNext: Button;
-    lateinit var txtTitleQuestion: TextView
+    lateinit var btnQuit: Button;
+    lateinit var txtTitleQuestion: TextView;
+    lateinit var textTitle: TextView
+    lateinit var list: List<Quiz>
+
     var position = 0
 
+    lateinit var answer: Answer
 
+    val viewModel: QuizListViewmodel by lazy {
+        ViewModelProvider(this).get(QuizListViewmodel::class.java)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
-
-
-
-        val categoryTitle = intent.getStringExtra(CATEGORY)
-
-        val textTitle: TextView = findViewById(R.id.titleCategory)
-        textTitle.text = "$categoryTitle Quiz"
-
-
-        var list = listOf(
-            Quiz("Essa é a questão 01", "ckdncjwkn", "wdaclkdwnc"),
-            Quiz("Essa é a questão 02", "ckdncjwkn", "wdaclkdwnc"),
-            Quiz("Essa é a questão 03", "ckdncjwkn", "wdaclkdwnc"),
-            Quiz("Essa é a questão 04", "ckdncjwkn", "wdaclkdwnc"),
-            Quiz("Essa é a questão 05", "ckdncjwkn", "wdaclkdwnc"),
-            Quiz("Essa é a questão 06", "ckdncjwkn", "wdaclkdwnc"),
-            Quiz("Essa é a questão 07", "ckdncjwkn", "wdaclkdwnc"),
-            Quiz("Essa é a questão 08", "ckdncjwkn", "wdaclkdwnc"),
-            Quiz("Essa é a questão 09", "ckdncjwkn", "wdaclkdwnc"),
-            Quiz("Essa é a questão 10", "ckdncjwkn", "wdaclkdwnc")
-        )
 
         screenPager = findViewById(R.id.screen_viewpager)
         txtTitleQuestion = findViewById(R.id.questiontitle)
         tabIndicator = findViewById(R.id.tabLayout)
         btnNext = findViewById(R.id.btNext)
+        btnQuit = findViewById(R.id.btQuit)
+        textTitle = findViewById(R.id.titleCategory)
 
-        quizPagerAdaper = QuizAdapter(list, this)
-        screenPager.adapter = quizPagerAdaper
+        val context = this
 
-        //setup layout
+        //set text Title
+        val category = intent.getStringExtra(CATEGORY)
+        intent = Intent(this, Result::class.java)
+
+        if (category != null) {
+            viewModel.state.observe(this, Observer { state ->
+                when (state) {
+                    is QuizListViewmodel.State.Loading -> {
+                        vwLoading.visibility = View.VISIBLE
+                    }
+                    is QuizListViewmodel.State.Loaded -> {
+                        vwLoading.visibility = View.GONE
+                        list = state.items
+                        quizPagerAdaper = QuizAdapter(list, context)
 
 
-        tabIndicator.setupWithViewPager(screenPager)
+                        screenPager.adapter = quizPagerAdaper
 
-        btnNext.setOnClickListener(){
-            position = screenPager.currentItem
-            if (position < list.size) {
-                position = position + 1
-                screenPager.setCurrentItem(position)
-            }
 
-            if(position == list.size - 1){
-                btnNext.text="Finalizar"
-            }
+                        //setup layout
+                        tabIndicator.setupWithViewPager(screenPager)
 
-            if(position == list.size){
-                intent = Intent(this, Result::class.java)
-                this.startActivity(intent)
-                finish()
-            }
+
+                        //set text category
+                        textTitle.text = "${state.items[0].category} Quiz"
+                        if (screenPager.currentItem == list.size - 1) {
+                            btnNext.text = "Finalizar"
+                        } else {
+                            btnNext.text = "Next"
+                        }
+
+
+                        //click button next
+                        btnNext.setOnClickListener() {
+
+                            position = screenPager.currentItem
+
+                            if (position < list.size) {
+                                position = position + 1
+                                screenPager.setCurrentItem(position)
+                            }
+
+                            if (position == list.size) {
+
+                                context.startActivity(intent)
+                                finish()
+                            }
+                        }
+                    }
+                    is QuizListViewmodel.State.Error -> {
+                        vwLoading.visibility = View.GONE
+                        if (!state.hasConsumed) {
+                            state.hasConsumed = true
+                            Toast.makeText(this, R.string.error_loading, Toast.LENGTH_LONG).show()
+                        }
+
+                    }
+                }
+            })
+
+            viewModel.loadQuestions(category)
         }
+
+
+        btnQuit.setOnClickListener() {
+            finish()
         }
+
     }
+
+}

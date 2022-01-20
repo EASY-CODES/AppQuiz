@@ -27,9 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_alternative"
         android:padding="10dp"
         android:text="@string/text_alternative"
+        android:background="@drawable/bg_alternative"
         android:textColor="@color/text_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/question"
@@ -41,10 +41,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_alternative_selected"
         android:padding="10dp"
         android:text="@string/text_alternative"
-        android:textColor="@color/stroke_selected"
+        android:background="@drawable/bg_alternative"
+        android:textColor="@color/text_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/item1"
         app:layout_constraintTop_toBottomOf="@+id/item1" />
@@ -55,13 +55,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_alternative"
         android:padding="10dp"
         android:text="@string/text_alternative"
+        android:background="@drawable/bg_alternative"
         android:textColor="@color/text_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/item2"
-        app:layout_constraintTop_toBottomOf="@+id/item2" />
+        app:layout_constraintTop_toBottomOf="@+id/item2"/>
 
     <TextView
         android:id="@+id/item4"
@@ -69,12 +69,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/bg_alternative"
         android:padding="10dp"
         android:text="@string/text_alternative"
+        android:background="@drawable/bg_alternative"
         android:textColor="@color/text_primary"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/item3"
         app:layout_constraintTop_toBottomOf="@+id/item3" />
