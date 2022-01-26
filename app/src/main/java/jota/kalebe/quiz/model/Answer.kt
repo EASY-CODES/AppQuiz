@@ -1,7 +1,8 @@
 package jota.kalebe.quiz.model
 
-data class Answer (
-    val incorrect_answers: String,
-    val correct_answer: String,
-    val answer: Boolean
-        )
+import android.widget.TextView
+
+data class Answer(
+    val user_answers: TextView,
+    val correct_answer: TextView
+)

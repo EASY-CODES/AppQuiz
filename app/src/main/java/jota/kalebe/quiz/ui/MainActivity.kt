@@ -1,5 +1,6 @@
 package jota.kalebe.quiz.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("ResourceType")
     fun loadItens(table: TableLayout){
         table.findViewById<View>(R.id.category1).findViewById<ImageView>(R.id.imgCover).setImageResource(R.drawable.icon_math)
         table.findViewById<View>(R.id.category1).findViewById<TextView>(R.id.category).text="Mathematics"
@@ -59,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         table.findViewById<View>(R.id.category5).findViewById<ImageView>(R.id.imgCover).setImageResource(R.drawable.icon_world)
         table.findViewById<View>(R.id.category5).findViewById<TextView>(R.id.category).text="Geography"
 
-        table.findViewById<View>(R.id.category6).findViewById<ImageView>(R.id.imgCover).setImageResource(R.drawable.icon_history)
+        table.findViewById<View>(R.id.category6).findViewById<ImageView>(R.id.imgCover).setImageResource(R.drawable.ic_history)
         table.findViewById<View>(R.id.category6).findViewById<TextView>(R.id.category).text="History"
     }
 

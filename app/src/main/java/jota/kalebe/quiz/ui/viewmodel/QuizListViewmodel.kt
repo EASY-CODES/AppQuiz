@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import jota.kalebe.quiz.model.Answer
 import jota.kalebe.quiz.model.Quiz
 import jota.kalebe.quiz.model.QuizHttp
@@ -17,14 +17,13 @@ class QuizListViewmodel : ViewModel() {
     val state: LiveData<State>
         get() = _state
 
-    private val _listAnswer = MutableLiveData<ArrayList<Answer>>()
-    val listAnswer: LiveData<ArrayList<Answer>>
-        get() = _listAnswer
+    private val _answer = MutableLiveData<Answer>()
+    val answer: LiveData<Answer>
+        get() = _answer
 
-    private val _current = MutableLiveData<Int>()
-    val current: LiveData<Int>
-        get() = _current
-
+    private val _score = MutableLiveData<Int>(0)
+    val score: LiveData<Int>
+        get() = _score
 
     fun loadQuestions(category: String ) {
         viewModelScope.launch {
@@ -45,12 +44,13 @@ class QuizListViewmodel : ViewModel() {
         }
     }
 
-    fun setAnswer(answer: Answer){
-        _listAnswer.value?.add(answer)
+    fun setAnswer(a: Answer){
+        _answer.value = a
+        println(a.toString())
     }
 
-    fun updateCurrentItem(current: Int) {
-        _current.value = current
+    fun setScore(){
+        _score.value = _score.value?.plus(1)
     }
 
     sealed class State {

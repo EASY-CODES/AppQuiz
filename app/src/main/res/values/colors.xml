@@ -19,6 +19,10 @@
     <color name="bg_button">#e7fafd</color>
     <color name="text_button">#07d3f4</color>
     <color name="bg_button_next">#05d3f6</color>
+    <color name="stroke_alternative_correct">#006400</color>
+    <color name="stroke_alternative_incorrect">#FF0000</color>
+    <color name="orange">#FF7F50</color>
+    <color name="yellom">#ffff00</color>
 
 
 </resources>

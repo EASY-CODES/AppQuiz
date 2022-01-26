@@ -4,5 +4,5 @@
     android:width="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
-    <path android:fillColor="@color/stroke_alternative_incorrect" android:pathData="M18,4L20,8H17L15,4H13L15,8H12L10,4H8L10,8H7L5,4H4A2,2 0 0,0 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V4H18Z" />
+    <path android:fillColor="@color/stroke_alternative_correct" android:pathData="M12,7.77L18.39,18H5.61L12,7.77M12,4L2,20H22" />
 </vector>
