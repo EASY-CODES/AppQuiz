@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="jota.kalebe.quiz.ui.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_quizFragment"
+            app:destination="@+id/quizFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="jota.kalebe.quiz.ui.QuizFragment"
+        android:label="QuizFragment"
+        tools:layout="@layout/fragment_quiz" >
+
+        <argument
+            android:name="category"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_quizFragment_to_resultFragment"
+            app:destination="@+id/resultFragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_homeFragment"
+            app:destination="@+id/homeFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="jota.kalebe.quiz.ui.ResultFragment"
+        android:label="ResultFragment"
+        tools:layout="@layout/fragment_result" >
+
+        <action
+            android:id="@+id/action_resultFragment_to_homeFragment"
+            app:destination="@+id/homeFragment" />
+        <argument
+            android:name="totalQuestionsCorrects"
+            app:argType="integer"/>
+    </fragment>
+</navigation>
