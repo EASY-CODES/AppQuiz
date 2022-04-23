@@ -1,7 +1,6 @@
 package jota.kalebe.quiz.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,21 +8,21 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.scopes.FragmentScoped
 import jota.kalebe.quiz.R
 import jota.kalebe.quiz.databinding.FragmentQuizBinding
 import jota.kalebe.quiz.model.Quiz
 import jota.kalebe.quiz.ui.viewmodel.QuizListViewmodel
 
 
+@AndroidEntryPoint
 class QuizFragment : Fragment(), View.OnClickListener {
 
-    val viewModel: QuizListViewmodel by lazy {
-        ViewModelProvider(this).get(QuizListViewmodel::class.java)
-    }
+    val viewModel : QuizListViewmodel by viewModels()
 
     private lateinit var list: List<Quiz>
     private var _binding: FragmentQuizBinding? = null
@@ -46,9 +45,8 @@ class QuizFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         val category = args.category
-        Log.d("list_quiz", category)
 
-        viewModel.state.observe(requireActivity(), Observer { state ->
+        viewModel.state.observe(this,{ state ->
             when (state) {
 
                 is QuizListViewmodel.State.Loading -> {
@@ -74,7 +72,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
             }
         })
 
-        viewModel.loadQuestions(category)
+        viewModel.loadQuestions(category, "multiple")
 
     }
 

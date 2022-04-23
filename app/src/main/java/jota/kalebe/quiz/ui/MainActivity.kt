@@ -2,10 +2,11 @@ package jota.kalebe.quiz.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import jota.kalebe.quiz.R
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val CATEGORY = "CATEGORY"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -17,16 +17,11 @@ class ResultFragment : Fragment() {
     private var _binding: FragmentResultBinding? = null
     private val binding: FragmentResultBinding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View = FragmentResultBinding.inflate(inflater, container, false).apply {
-        _binding
+        _binding = this
     }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

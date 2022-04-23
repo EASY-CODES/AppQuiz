@@ -4,38 +4,39 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import jota.kalebe.quiz.model.Quiz
-import jota.kalebe.quiz.model.QuizHttp
-import kotlinx.coroutines.Dispatchers
+import jota.kalebe.quiz.network.QuizService
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class QuizListViewmodel : ViewModel() {
+@HiltViewModel
+class QuizListViewmodel @Inject constructor(private val repository: QuizService) : ViewModel() {
     private val _state = MutableLiveData<State>()
     val state: LiveData<State>
         get() = _state
 
-    val _list = MutableLiveData<List<Quiz>>()
 
-
-    fun loadQuestions(category: String ) {
+    fun loadQuestions(category: String, type: String) =
         viewModelScope.launch {
             _state.value = State.Loading
 
-            val result = withContext(Dispatchers.IO) {
-                QuizHttp.searchQuestions(QuizHttp.AMOUT,
-                    category,
-                    QuizHttp.EASY,
-                    QuizHttp.MULTIPLE)
+            repository.getAllQuestions(
+                "10",
+                category,
+                "easy",
+                type
+            ).let { result ->
+                if (result.results == null) {
+                    _state.value = State.Error(Exception("Error loading questions"), false)
+                } else {
+                    _state.value = State.Loaded(result.results)
+                }
             }
-            if (result?.results == null) {
-                _state.value = State.Error(Exception("Error loading questions"), false)
-            } else {
-                _list.value = result?.results
-                _state.value = State.Loaded(result?.results)
-            }
+
+
         }
-    }
+
 
     sealed class State {
         object Loading : State()

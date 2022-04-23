@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id "androidx.navigation.safeargs"
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -55,10 +56,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
 
-    //libs for consume api
-    implementation 'com.google.code.gson:gson:2.8.9'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
-
     //generate data class model
     implementation 'wu.seal.jsontokotlin:library:3.6.1'
 
@@ -73,6 +70,24 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0"
     testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
+    //logging interceptor
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
+
+    //Dagger - Hilt
+    implementation "com.google.dagger:hilt-android:2.37"
+    kapt "com.google.dagger:hilt-android-compiler:2.37"
+
+    def hilt_jetpack_version = "1.0.0-alpha02"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_jetpack_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+
+    // Activity KTX for viewmodel
+    implementation "androidx.activity:activity-ktx:1.1.0"
 
 
 }
